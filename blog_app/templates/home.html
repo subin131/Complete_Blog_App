@@ -1,0 +1,72 @@
+{% extends "core/base.html"%} {% block content%}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 style="text-align: center; font-weight: 900">Blog APP</h1>
+    <hr />
+    {% for todo in todos%}
+    <div style="border: 1px solid black; padding: 10px">
+      {% if todo.completed%}
+
+      <del> <h3 style="text-align: center; color: red">{{todo.title}}</h3></del>
+      <del
+        ><p style="text-align: center; font-size: 14px; color: green">
+          {{todo.description}}
+        </p>
+      </del>
+      {% else%}
+      <h3 style="text-align: center; color: red">{{todo.title}}</h3>
+      <p style="text-align: center; font-size: 14px; color: green">
+        {{todo.description}}
+      </p>
+      {% endif%}
+      <p style="text-align: center; font-size: 12px">{{todo.created_at}}</p>
+
+      <div style="display: flex; justify-content: center">
+        <a
+          href="{% url 'edit' id=todo.id%}"
+          style="margin-right: 20px"
+          class="btn btn-success"
+        >
+          Edit
+        </a>
+        <a
+          style="margin-right: 20px"
+          href="{% url 'delete' id=todo.id %}"
+          class="btn btn-danger"
+          >Delete</a
+        >
+        {% if todo.completed %}
+        <a href="{% url 'mark-complete' id=todo.id %}" class="btn btn-primary">
+          Mark as incomplete
+        </a>
+        {% else%}
+        <a href="{% url 'mark-complete' id=todo.id %}" class="btn btn-primary">
+          Mark as complete
+        </a>
+        {% endif%}
+      </div>
+      {% comment %}
+      <a style="font-size: 15px; margin-left: 10px; align-items: center" href=""
+        >Mark as Completed</a
+      >
+      {% endcomment %}
+    </div>
+    <hr />
+    {% endfor%}
+    <div style="display: flex; justify-content: center">
+      <a href="{%  url 'add' %}"
+        ><button type="button" class="btn btn-primary">Add Todo</button></a
+      >
+      {% if todos %}
+      <a
+        style="margin-left: 10px"
+        href="{% url 'delete-all'%}"
+        class="btn btn-danger"
+        >Delete All</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content%}

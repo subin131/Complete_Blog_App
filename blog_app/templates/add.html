@@ -1,0 +1,28 @@
+{% extends "core/base.html"%} {% block content%}
+<div class="container">
+  <div class="jumbotron">
+    <h2 style="border-bottom: 2px solid black; text-align: center">
+      Adding New Todo
+    </h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label style="font-size: 25px" for="title">Enter Title</label>
+        <input type="text" class="form-control" id="title" name="title" />
+      </div>
+      <div class="form-group">
+        <label style="font-size: 25px" for="description"
+          >Enter Decription</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          name="description"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock content%}
