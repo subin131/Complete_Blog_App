@@ -1,8 +1,9 @@
-{% extends "core/base.html"%} {% block content%}
+{% extends "core/base.html"%} {% block title%}Blog | Add {% endblock title%}
+{%block content%}
 <div class="container">
   <div class="jumbotron">
     <h2 style="border-bottom: 2px solid black; text-align: center">
-      Adding New Todo
+      Adding New Blog
     </h2>
     <form method="POST">
       {% csrf_token %}

@@ -26,21 +26,21 @@ def delete(request,id):
 @login_required  
 def edit(request,id):
     todo=Todo.objects.get(id=id)
-    try:
-        if request.method=="GET":
-            return render(request,"edit.html",{'todo':todo})
+   
+    if request.method=="GET":
+        return render(request,"edit.html",{'todo':todo})
         
-        else:
-            title=request.POST["title"]
-            description=request.POST["description"]
+    else:
+        
+        title=request.POST["title"]
+        description=request.POST["description"]
             
-            todo.title=title
-            todo.description=description
+        todo.title=title
+        todo.description=description
             
-            todo.save()
-            return redirect("home")
-    except:
-        return ("Something Error occured")
+        todo.save()
+        return redirect("home")
+    
 @login_required   
 def delete_all(request):
     Todo.objects.all().delete()
