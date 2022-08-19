@@ -3,6 +3,7 @@
 <div class="container">
   <form method="post">
     {% csrf_token%}
+    <div style="margin:100px;border:2px solid black; padding:20px;width:50%;alignItem:center">
     <h2>Login</h2>
     <div class="form-group">
       <label for="username">Username</label>
@@ -12,6 +13,7 @@
         id="username"
         name="username"
         placeholder="Enter Username"
+        required
       />
     </div>
     <div class="form-group">
@@ -22,9 +24,11 @@
         id="exampleInputPassword1"
         placeholder="Password"
         name="password"
+        required
       />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+</div>
 </div>
 {% endblock content%}
